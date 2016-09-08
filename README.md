@@ -8,3 +8,4 @@
 - [x] 5. Longest Palindromic Substring
 - [x] 6. ZigZag Conversion
 - [x] 7. Reverse Integer
+- [x] 8. String to Integer
