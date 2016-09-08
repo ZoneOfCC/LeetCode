@@ -6,3 +6,4 @@
 - [x] 3. Longest Substring Without Repeating Characters 
 - [x] 4. Median of Two Sorted Arrays 
 - [x] 5. Longest Palindromic Substring
+- [x] 6. ZigZag Conversion
