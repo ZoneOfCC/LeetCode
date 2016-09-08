@@ -1,3 +1,8 @@
+/*
+* author: dongchagnzhang
+* mail: dongchang.zhang@outlook.com
+* time: 2016.09
+*/
 #include<string>
 #include<iostream>
 
