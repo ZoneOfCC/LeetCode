@@ -9,3 +9,4 @@
 - [x] 6. ZigZag Conversion
 - [x] 7. Reverse Integer
 - [x] 8. String to Integer
+- [x] 9. Palindrome Number
