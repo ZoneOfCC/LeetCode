@@ -10,8 +10,10 @@
 - [x] 7. Reverse Integer
 - [x] 8. String to Integer
 - [x] 9. Palindrome Number
+- [ ] 10. Regular Expression Matching
 - [x] 11. Container With Most Water
 - [x] 12. Integer to Roman
 - [x] 13. Roman to Integer
 - [x] 14. Longest Common Prefix
+- [x] 15. 3 Sum
 
