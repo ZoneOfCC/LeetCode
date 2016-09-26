@@ -18,4 +18,5 @@
 - [x] 15. 3 Sum
 - [x] 16. 3 Sum Closest
 - [x] 17. Letter Combinations of a Phone Number
-- [x] 18. 4 Sum : judge small：Accepted! judge large: Time Limit Exceeded
+- [] 18. 4 Sum : judge small：Accepted! judge large: Time Limit Exceeded
+- [x] 18. 4 Sum : All: Accepted! 
