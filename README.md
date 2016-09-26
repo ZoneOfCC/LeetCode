@@ -22,3 +22,4 @@
 - [x] 18. 4 Sum : All: Accepted! 
 - [x] 19. Remove Nth Node From End of List
 - [x] 20. Valid Parentheses
+- [x] 21. Merge Two Sorted Lists
