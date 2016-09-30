@@ -23,3 +23,4 @@
 - [x] 19. Remove Nth Node From End of List
 - [x] 20. Valid Parentheses
 - [x] 21. Merge Two Sorted Lists
+- [x] 22. Generate Parentheses
