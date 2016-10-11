@@ -24,3 +24,4 @@
 - [x] 20. Valid Parentheses
 - [x] 21. Merge Two Sorted Lists
 - [x] 22. Generate Parentheses
+- [x] 24. Swap Nodes in Pairs 
