@@ -26,3 +26,8 @@
 - [x] 22. Generate Parentheses
 - [x] 24. Swap Nodes in Pairs 
 - [x] 26. Remove Duplicates from Sorted Array  效率低
+- [x] 26. Remove Duplicates from Sorted Array2  不借助其它容器~效率稍有提高
+- [x] 27. Remove Element 效率低
+- [x] 27. Remove Element2 效率低
+- [x] 28. Implement strStr() 暴力搜索
+- [ ] 28. Implement strStr()2 kmp
