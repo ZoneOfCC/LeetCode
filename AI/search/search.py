@@ -18,7 +18,8 @@ Pacman agents (in searchAgents.py).
 """
 
 import util
-
+import time
+from random import choice
 class SearchProblem:
     """
     This class outlines the structure of a search problem, but doesn't implement
@@ -76,28 +77,43 @@ def depthFirstSearch(problem):
     """
     Search the deepest nodes in the search tree first.
 
-    Your search algorithm needs to return a list of actions that reaches the
-    goal. Make sure to implement a graph search algorithm.
-
-    To get started, you might want to try some of these simple commands to
-    understand the search problem that is being passed in:
-
-    print "Start:", problem.getStartState()
-    print "Is the start a goal?", problem.isGoalState(problem.getStartState())
-    print "Start's successors:", problem.getSuccessors(problem.getStartState())
+    Author: dongchangzhang @2016
     """
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    # for prepare
+    Open = util.Stack()
+    Closed = []
+    
+    # start Search 
+    result = generalSearch(Open, Closed, problem)
+    print(result)
+    return result
 
 def breadthFirstSearch(problem):
-    """Search the shallowest nodes in the search tree first."""
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    """
+    Search the shallowest nodes in the search tree first.
+    
+    Author: dongchangzhang @2016
+    """
+    # for prepare
+    Open = util.Queue()
+    Closed = []
+
+    # start Search 
+    result = generalSearch(Open, Closed, problem)
+    print(result)
+    return result
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    # for prepare
+    Open = util.PriorityQueue()
+    Closed = []
+
+    # start Search 
+    result = generalSearch(Open, Closed, problem, 'P')
+    print(result)
+    return result
 
 def nullHeuristic(state, problem=None):
     """
@@ -109,11 +125,118 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
+
+    print("hello world!")
     util.raiseNotDefined()
 
+
+def generalSearch(Open, Closed, problem, status='N'):
+    """
+    A function which can be used by every search method 
+    input:
+        arg1: Open
+                type: Stack | Queue ... which has method include push and pop
+        arg2: Closed
+                type: list
+        arg3: problem
+                type:  PositionSearchProblem
+        arg4: status
+                type: string
+                'N' : type(Open) is Stack or Queue
+                'P' : type(Open) is PriorityQueue
+    return:
+        type: list [action1, action2,...]
+
+    Author: dongchangzhang @2016
+    """
+    graph = {}
+    cost = {}
+    parent = None
+
+    start_state = problem.getStartState()
+    if status == 'N':
+        Open.push(start_state)
+    elif status == 'P':
+        Open.push(start_state, 0)
+    graph[start_state] = parent
+    cost[start_state] = 0
+
+    while not Open.isEmpty():
+        # take out node from Open and then put it into Closed
+        node_now = Open.pop()
+        print(cost[node_now])
+        Closed.append(node_now)
+        parent = node_now
+        # is goal?
+        if problem.isGoalState(node_now):
+            # find out way && return way
+            print("IS GOAL", node_now)
+            return findWay(graph, node_now)
+        # else expand nodes
+        successors = problem.getSuccessors(node_now)
+        for node, _, weight in successors:
+            if node not in graph:
+                if status == 'N':
+                    Open.push(node)
+                elif status == 'P':
+                    cost[node] = weight + cost[parent]
+                    Open.push(node, cost[node])
+                graph[node] = parent
+    # no way, return []
+    return []
+
+def findWay(graph, goal):
+    """
+    input:
+        arg1: graph
+                type: dict {node: parent}
+        arg2: goal
+                type: tuple (x, y)
+    return:
+        type: list [action1, action2,...]
+        pacman will come to location by this action list
+    Author: dongchangzhang @2016
+    """
+    way = []
+    while graph.get(goal) != None:
+        way.insert(0, getAction(graph.get(goal), goal))
+        goal = graph.get(goal)
+
+    return way
+
+def getAction(start, end):
+    """
+    input:
+        arg1: start
+                type: (x, y)
+        arg2: end
+                type: (x, y)
+    return: action 
+            'East' | 'West' | 'North' | 'South'| None (in this case: input error)
+            by which pacman can go from start to end
+
+    Author: dongchangzhang @2016
+    """
+    s1, e1 = start
+    s2, e2 = end
+
+    if s1 + 1 == s2 and e1 == e2:
+        return 'East'
+    elif s1 == s2 + 1 and e1 == e2:
+        return 'West'
+    elif s1 == s2 and e1 + 1 == e2:
+        return 'North'
+    elif s1 == s2 and e1 == e2 + 1:
+        return 'South'
+    else:
+        print('Error At:', start, end)
+        return 'None'
 
 # Abbreviations
 bfs = breadthFirstSearch
 dfs = depthFirstSearch
 astar = aStarSearch
 ucs = uniformCostSearch
+
+
+
